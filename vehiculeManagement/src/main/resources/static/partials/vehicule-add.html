@@ -1,12 +1,18 @@
 <div class="col-md-2">	
-	<form name="addForm" ng-submit="addNewVehicule(name, type)">
-		<input ng-model="name" />name
-		<input ng-model="vType" />type<br/>
+	<form name="addForm" ng-submit="addNewVehicule(name, vType)">
+		<h3>Name of the vehicule</h3>
+		<input ng-model="name" />
+		<h3>Type of the vehicule</h3>
+		<select ng-model="vType">
+				<option value="car">Car</option>
+				<option value="bike">Bike</option>
+				<option value="moto">Moto</option>
+		</select>
 		<input type="submit" value="Submit"/>
 	</form>
 </div>
 
 <div class="col-md-10"> 
-	<h2>{{name}}</h2>
-	<img src="{{vType |type}}"/>
+	<h1>{{name}}</h1>
+	<img src="{{vType |type}}" alt="vehiculeType"/>
 </div>

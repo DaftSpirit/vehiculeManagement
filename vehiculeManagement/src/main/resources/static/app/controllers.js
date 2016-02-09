@@ -8,8 +8,9 @@ vehiculeMgmtControllers.controller('VehiculeListCtrl', [ '$scope', 'Vehicule',
 		function($scope, Vehicule) {
 			$scope.vehicules = Vehicule.query();
 			$scope.orderProp = 'name';
-			$scope.remove = function(name){
-				Vehicule.remove(name, function(){});
+			$scope.remove = function(vehiculeName){
+				alert(vehiculeName);
+				Vehicule.remove({name : vehiculeName});
 			};
 		} ]);
 
@@ -30,7 +31,7 @@ vehiculeMgmtControllers.controller('VehiculeEditCtrl', [ '$scope', '$routeParams
 				$scope.vehiculeType = type;
 			};
 			$scope.save = function(){
-				Vehicule.save($scope.vehicule, function(){});
+				Vehicule.save({name : $scope.name, type : $scope.type});
 			};
 			
 		} ]);

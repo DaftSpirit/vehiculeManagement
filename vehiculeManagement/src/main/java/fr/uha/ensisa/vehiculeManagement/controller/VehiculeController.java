@@ -5,8 +5,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,7 +30,7 @@ public class VehiculeController {
 	}
 	
 	@RequestMapping(value="/edit/{name}", method=RequestMethod.POST)
-	public void replaceVehicule(@ModelAttribute Vehicule vehicule, @PathVariable("name") String name){
+	public void replaceVehicule(@RequestBody Vehicule vehicule, @PathVariable("name") String name){
 		vehicules.remove(name);
 		vehicules.put(name, vehicule);
 	}
@@ -41,12 +41,14 @@ public class VehiculeController {
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public void addVehicule(@ModelAttribute Vehicule vehicule){
+	public void addVehicule(@RequestBody Vehicule vehicule){
+		System.out.println("add" + vehicule);
 		vehicules.put(vehicule.getName(), vehicule);
 	}
 	
-	@RequestMapping(value="/vehicules", method=RequestMethod.DELETE)
+	@RequestMapping(value="/vehicules/{name}", method=RequestMethod.DELETE)
 	public void deleteVehicule(@PathVariable("name") String name){
+		System.out.println("delete" + name);
 		vehicules.remove(name);
 	}
 	
