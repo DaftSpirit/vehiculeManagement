@@ -1,9 +1,9 @@
 <div class="col-md-2">	
 
-	<form name="editForm" ng-submit="save()">
+	<form name="editForm" ng-submit="save(vehiculeName, vehiculeType)">
 		<input ng-model="vehiculeName" value="{{vehicule.name}}"/> name
 		<input ng-model="vehiculeType" value="{{vehicule.type}}"/> type <br/>
-		<input type="submit" value="Submit" ng-click="setName(name); setType(type)"/>
+		<input type="submit" value="Submit"/>
 	</form>
 </div>
 <div class="col-md-10">	

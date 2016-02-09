@@ -37,6 +37,7 @@ public class VehiculeController {
 	
 	@RequestMapping(value="/edit/{vehiculeName}")
 	public Vehicule getVehicule(@PathVariable("vehiculeName") String vehiculeName){
+		System.out.println("get" + vehiculeName);
 		return vehicules.get(vehiculeName);
 	}
 	

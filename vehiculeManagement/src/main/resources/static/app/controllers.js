@@ -17,7 +17,7 @@ vehiculeMgmtControllers.controller('VehiculeListCtrl', [ '$scope', 'Vehicule',
 vehiculeMgmtControllers.controller('VehiculeEditCtrl', [ '$scope', '$routeParams', 'Vehicule',
 		function($scope, Vehicule, $routeParams) {
 			$scope.vehicule = Vehicule.get({
-				vehiculeName : $routeParams.vehiculeName
+				name : $routeParams.vehiculeName
 			}, function(vehicule){
 				$scope.vehiculeName = vehicule.name;
 				$scope.vehiculeType = vehicule.type;
@@ -30,8 +30,10 @@ vehiculeMgmtControllers.controller('VehiculeEditCtrl', [ '$scope', '$routeParams
 			$scope.setType = function(type){
 				$scope.vehiculeType = type;
 			};
-			$scope.save = function(){
-				Vehicule.save({name : $scope.name, type : $scope.type});
+			$scope.save = function(vehiculeName, vehiculeType){
+				$scope.setName(vehiculeName);
+				$scope.setType(vehiculeType);
+				Vehicule.save({name : $scope.vehiculeName, type : $scope.vehiculeType});
 			};
 			
 		} ]);
