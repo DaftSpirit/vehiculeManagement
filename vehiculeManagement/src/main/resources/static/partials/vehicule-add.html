@@ -1,0 +1,12 @@
+<div class="col-md-2">	
+	<form name="addForm" ng-submit="addNewVehicule(name, type)">
+		<input ng-model="name" />name
+		<input ng-model="vType" />type<br/>
+		<input type="submit" value="Submit"/>
+	</form>
+</div>
+
+<div class="col-md-10"> 
+	<h2>{{name}}</h2>
+	<img src="{{vType |type}}"/>
+</div>

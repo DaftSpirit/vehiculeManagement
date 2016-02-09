@@ -1,0 +1,34 @@
+<div class="container-fluid" ng-init="cars = 0; bikes = 0; motos = 0" >
+	<div class="row">
+		<div class="col-md-2">
+			<!--Sidebar content-->
+			<a href="#/add"><h1>Add a vehicule</h1></a>
+	
+			Search: <input ng-model="query">
+	
+			Sort by:
+			<select ng-model="orderProp">
+				<option value="name">Alphabetical</option>
+				<option value="-name">Alphabetical reverse</option>
+			</select>
+			<ul>
+				<li>{{cars}} cars</li>
+				<li>{{bikes}} bikes</li>
+				<li>{{motos}} motos</li>			
+			</ul>
+			
+			
+		</div>
+		<div class="col-md-10">						
+			<ul class="vehicules">
+  				<li ng-repeat="vehicule in vehicules | filter:query | orderBy:orderProp"
+      class="thumbnail vehicule-listing">
+    				<a href="#/edit/{{vehicule.name}}"><h1>{{vehicule.name}}</h1></a>
+    				<a href="#/edit/{{vehicule.name}}"><img src="{{vehicule.type | type}}"/></a>
+    				<button ng-click="remove(vehicule.name)"> <h3>Delete</h3> </button>
+    				<code ng-if="{{vehicule.type === 'car'}}">cars = cars + 1</code>
+ 				</li>
+			</ul>
+		</div>
+	</div>
+</div>
