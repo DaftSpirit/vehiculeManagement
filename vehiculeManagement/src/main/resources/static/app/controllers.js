@@ -17,7 +17,7 @@ vehiculeMgmtControllers.controller('VehiculeListCtrl', [ '$scope', 'Vehicule',
 vehiculeMgmtControllers.controller('VehiculeEditCtrl', [ '$scope', '$routeParams', 'Vehicule',
 		function($scope, Vehicule, $routeParams) {
 			$scope.vehicule = Vehicule.get({
-				name : $routeParams.vehiculeName
+				name : $routeParams.name
 			}, function(vehicule){
 				$scope.vehiculeName = vehicule.name;
 				$scope.vehiculeType = vehicule.type;
