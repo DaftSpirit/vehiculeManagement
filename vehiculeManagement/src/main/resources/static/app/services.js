@@ -1,7 +1,7 @@
 var vehiculeMgmtServices = angular.module('vehiculeMgmtServices', [ 'ngResource' ]);
 
 vehiculeMgmtServices.factory('Vehicule', [ '$resource', function($resource) {
-	return $resource('vehicules/:vehicules.json', {}, {
+	return $resource('vehicules/', {}, {
 		query : {
 			method : 'GET',
 			params : {},
@@ -9,12 +9,17 @@ vehiculeMgmtServices.factory('Vehicule', [ '$resource', function($resource) {
 		},
 		save : {
 			method : 'POST',
-			params : {}
+			templateUrl : {name}
 		},
 		remove : {
 			method : 'DELETE',
-			params : {name}
-		}
+			templateUrl : {name}
+		},
+		get : {
+			method : 'GET',
+			templateUrl : {name}
+ 		}
+		
 	
 	});
 } ]);

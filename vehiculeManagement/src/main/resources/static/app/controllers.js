@@ -9,8 +9,8 @@ vehiculeMgmtControllers.controller('VehiculeListCtrl', [ '$scope', 'Vehicule',
 			$scope.vehicules = Vehicule.query();
 			$scope.orderProp = 'name';
 			$scope.remove = function(vehiculeName){
-				alert(vehiculeName);
 				Vehicule.remove({name : vehiculeName});
+				location.reload(true);
 			};
 		} ]);
 
@@ -18,9 +18,6 @@ vehiculeMgmtControllers.controller('VehiculeEditCtrl', [ '$scope', '$routeParams
 		function($scope, Vehicule, $routeParams) {
 			$scope.vehicule = Vehicule.get({
 				name : $routeParams.name
-			}, function(vehicule){
-				$scope.vehiculeName = vehicule.name;
-				$scope.vehiculeType = vehicule.type;
 			});
 			
 			$scope.setName = function(name){
@@ -33,26 +30,15 @@ vehiculeMgmtControllers.controller('VehiculeEditCtrl', [ '$scope', '$routeParams
 			$scope.save = function(vehiculeName, vehiculeType){
 				$scope.setName(vehiculeName);
 				$scope.setType(vehiculeType);
-				Vehicule.save({name : $scope.vehiculeName, type : $scope.vehiculeType});
+				Vehicule.save({name : $scope.vehiculeName});
 			};
 			
 		} ]);
 
 vehiculeMgmtControllers.controller('VehiculeAddCtrl', [ '$scope', 'Vehicule',
 		function($scope, Vehicule) {
-			$scope.newVehicule = {name : 'default', type : 'car'};
 			
-			$scope.setName = function(name) {
-				$scope.newVehicule.name = name;
-			};
-			
-			$scope.setType = function(type) {
-				$scope.newVehicule.type = type;
-			};
-			
-			$scope.addNewVehicule = function(name, type) {
-				$scope.setName(name);
-				$scope.setType(type);
-				Vehicule.save($scope.newVehicule);
+			$scope.addNewVehicule = function(vName, vType) {
+				Vehicule.save({name : vName, type : vType});
 			};
 		} ]);

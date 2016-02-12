@@ -1,5 +1,5 @@
 <div class="col-md-2">	
-	<form name="addForm" ng-submit="addNewVehicule(name, vType)">
+	<form name="addForm" ">
 		<h3>Name of the vehicule</h3>
 		<input ng-model="name" />
 		<h3>Type of the vehicule</h3>
@@ -8,7 +8,7 @@
 				<option value="bike">Bike</option>
 				<option value="moto">Moto</option>
 		</select>
-		<input type="submit" value="Submit"/>
+		<input type="submit" value="Submit" ng-click="addNewVehicule(name, vType)"/>
 	</form>
 </div>
 
