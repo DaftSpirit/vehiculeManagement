@@ -1,6 +1,6 @@
 # vehiculeManagement
 
-Web application project at ensisa
+RESTFul application made at ensisa
 
 # Technologies
 
